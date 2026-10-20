@@ -6,7 +6,7 @@
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 14:03:46 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/19 15:44:54 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:13:58 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 # define GET_NEXT_LINE_H
 
 # include <fcntl.h>
-# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
-int	dict_open(char *file, int __oflag);
-int	dict_close(int filedesc);
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2
+# endif
 
+# if BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
+
+int		dict_open(char *file, int __oflag);
+int		dict_close(int filedesc);
+char	*ft_strjoin(char *s1, char *s2);
+char	*write_stash(int fd, char *stash);
+int		ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int c);
 
 #endif

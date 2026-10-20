@@ -6,44 +6,117 @@
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 13:58:29 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/19 15:57:35 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/20 15:22:57 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *get_next_line(int fd)
+char	*write_stash(int fd, char *stash)
 {
-	static	char *buffer;
-	static int i;
+	char	*buffer;
+	int		n;
 
-	if(!(i != 0))
-		i = 0;
-	printf(" i value %d  \n", i);
-	buffer = malloc(sizeof(char *) * 200);
-	if(buffer == NULL)
-		return NULL;
-
-	int n = read(fd, buffer, BUFSIZ);
-	while(i < n && buffer[i] != '\n')
+	n = 1;
+	buffer = malloc(sizeof(char *) * BUFFER_SIZE);
+	if (buffer == NULL)
+		return (NULL);
+	while (ft_strchr(stash, '\n') == NULL && n > 0)
 	{
-		printf("%c", buffer[i]);
-		i++;
+		n = read(fd, buffer, BUFFER_SIZE);
+		buffer[n] = '\0';
+		stash = ft_strjoin(stash, buffer);
 	}
-	i++;
 	free(buffer);
-	return NULL;
+	return (stash);
 }
 
-
-int main()
+char	*ft_result_maker(int len, char *stash)
 {
-	char *filename = "test.txt";
-	int fd = dict_open(filename, O_RDONLY);
-	if(fd == 0)
+	char	*result;
+	int		k;
+
+	k = 0;
+	result = malloc(sizeof(char *) * len);
+	if (result == NULL)
+		return (NULL);
+	while (k < len)
+	{
+		result[k] = stash[k];
+		k++;
+	}
+	result[k] = '\0';
+	return (result);
+}
+
+char	*ft_reset_stash(int len, char *stash)
+{
+	int	h;
+
+	h = 0;
+	len++;
+	while (stash[len])
+	{
+		stash[h] = stash[len];
+		h++;
+		len++;
+	}
+	stash[h] = '\0';
+	return (stash);
+}
+
+char	*get_next_line(int fd)
+{
+	char static	*stash;
+	char		*result;
+	int			i;
+	int			j;
+	int			len;
+
+	stash = write_stash(fd, stash);
+	i = 0;
+	while (stash[i])
+	{
+		if (stash[i] == '\n')
+		{
+			j = i;
+			while (stash[j])
+				j++;
+			len = ft_strlen(stash) - (j - i);
+			result = ft_result_maker(len, stash);
+			stash = ft_reset_stash(len, stash);
+			return (result);
+		}
+		i++;
+	}
+	return (NULL);
+}
+
+int	main(void)
+{
+	char	*filename;
+	int		fd;
+	char	*result;
+
+	filename = "test.txt";
+	fd = dict_open(filename, O_RDONLY);
+	if (fd == 0)
 		return (0);
-		
-	get_next_line(fd); // first line
-	get_next_line(fd); // second line
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	printf("[%s]\n", result);
+	result = get_next_line(fd);
+	dict_close(fd);
 	return (0);
 }
