@@ -18,7 +18,7 @@ char	*write_stash(int fd, char *stash)
 	int		n;
 
 	n = 1;
-	buffer = malloc(sizeof(char *) * BUFFER_SIZE);
+	buffer = malloc(sizeof(char *) * BUFFER_SIZE + 1);
 	if (buffer == NULL)
 		return (NULL);
 	while (ft_strchr(stash, '\n') == NULL && n > 0)
@@ -88,6 +88,13 @@ char	*get_next_line(int fd)
 			return (result);
 		}
 		i++;
+	}
+	if(i < 0)
+	{
+		result = ft_result_maker(len, stash);
+		return result;
+		free(result);
+		stash = NULL;
 	}
 	return (NULL);
 }
