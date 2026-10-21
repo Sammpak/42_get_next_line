@@ -72,20 +72,3 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-
-int	dict_open(char *file, int __oflag)
-{
-	int	fd;
-
-	fd = open(file, __oflag);
-	if (fd == -1)
-		return (0);
-	return (fd);
-}
-
-int	dict_close(int filedesc)
-{
-	if (close(filedesc) == -1)
-		return (1);
-	return (0);
-}
