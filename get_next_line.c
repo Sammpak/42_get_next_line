@@ -113,19 +113,65 @@ char	*get_next_line(int fd)
 	return (NULL);
 }
 
-// int	main(void)
-// {
-// 	char	*filename;
-// 	int		fd;
-// 	char	*result;
 
-// 	filename = "test.txt";
-// 	fd = open(filename, O_RDONLY);
-// 	while ((result = get_next_line(fd)) != NULL)
+// char	*get_next_line(int fd)
+// {
+// 	static char	*stash[1024];
+// 	char		*result;
+
+// 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
+// 		return (NULL);
+// 	result = NULL;
+// 	stash[fd] = write_stash(fd, stash[fd]);
+// 	if (stash[fd] == NULL)
+// 		return (NULL);
+// 	result = check_line(stash[fd]);
+// 	if (result)
+// 		return (result);
+// 	if (stash[fd][0] != '\0')
 // 	{
-// 		printf("%s", result);
-// 		free(result);
+// 		result = ft_result_maker(ft_strlen(stash[fd]), stash[fd]);
+// 		free(stash[fd]);
+// 		stash[fd] = NULL;
+// 		return (result);
 // 	}
+// 	free(stash[fd]);
+// 	stash[fd] = NULL;
+// 	return (NULL);
+// }
+
+// int	main(void)
+// 	{
+// 	int	fd;
+// 	int	fd_2;
+// 	char	*result;
+// 	char	*result_2;
+
+// 	fd = open("test.txt", O_RDONLY);
+// 	fd_2 = open("test2.txt", O_RDONLY);
+
+// 	result = get_next_line(fd);
+// 	result_2 = get_next_line(fd_2);
+
+// 	while (result || result_2)
+// 	{
+// 		if (result)
+// 		{
+// 			printf("%s", result);
+// 			free(result);
+// 			result = get_next_line(fd);
+// 		}
+// 		if (result_2)
+// 		{
+// 			printf("%s", result_2);
+// 			free(result_2);
+// 			result_2 = get_next_line(fd_2);
+// 		}
+// 	}
+// 	close(fd);
+// 	close(fd_2);
+// }
+
 // 	close(fd);
 // 	return (0);
 // }
