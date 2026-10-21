@@ -6,7 +6,7 @@
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 13:58:29 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/21 12:54:31 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/21 14:24:14 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,21 +123,11 @@ char	*get_next_line(int fd)
 // 	fd = dict_open(filename, O_RDONLY);
 // 	if (fd == 0)
 // 		return (0);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
-// 	printf("[%s]\n", result);
-// 	result = get_next_line(fd);
+// 	while ((result = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", result);
+// 		free(result);
+// 	}
 // 	dict_close(fd);
 // 	return (0);
 // }
