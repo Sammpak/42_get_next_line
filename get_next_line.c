@@ -113,7 +113,6 @@ char	*get_next_line(int fd)
 	return (NULL);
 }
 
-
 // char	*get_next_line(int fd)
 // {
 // 	static char	*stash[1024];
@@ -121,7 +120,6 @@ char	*get_next_line(int fd)
 
 // 	if (fd < 0 || fd >= 1024 || BUFFER_SIZE <= 0)
 // 		return (NULL);
-// 	result = NULL;
 // 	stash[fd] = write_stash(fd, stash[fd]);
 // 	if (stash[fd] == NULL)
 // 		return (NULL);
@@ -139,7 +137,6 @@ char	*get_next_line(int fd)
 // 	stash[fd] = NULL;
 // 	return (NULL);
 // }
-
 // int	main(void)
 // 	{
 // 	int	fd;
