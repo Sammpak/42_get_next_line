@@ -120,14 +120,12 @@ char	*get_next_line(int fd)
 // 	char	*result;
 
 // 	filename = "test.txt";
-// 	fd = dict_open(filename, O_RDONLY);
-// 	if (fd == 0)
-// 		return (0);
+// 	fd = open(filename, O_RDONLY);
 // 	while ((result = get_next_line(fd)) != NULL)
 // 	{
 // 		printf("%s", result);
 // 		free(result);
 // 	}
-// 	dict_close(fd);
+// 	close(fd);
 // 	return (0);
 // }
