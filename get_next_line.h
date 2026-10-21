@@ -6,7 +6,7 @@
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 14:03:46 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/20 15:13:58 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/21 12:53:22 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*write_stash(int fd, char *stash);
 int		ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
+char	*check_line(char *stash);
 
 #endif

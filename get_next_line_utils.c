@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line_utils.c                           :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 14:00:25 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/20 15:06:34 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/21 12:54:51 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	total_lengh = ft_strlen(s1) + ft_strlen(s2);
 	str = malloc(sizeof(char) * (total_lengh + 1));
 	if (str == NULL)
-		return (NULL);
+		return (free(s1), NULL);
 	while (s1 && s1[j])
 	{
 		str[i] = s1[j];
@@ -38,7 +38,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		i++;
 	}
 	str[i] = '\0';
-	return (str);
+	return (free(s1), str);
 }
 
 int	ft_strlen(const char *str)
