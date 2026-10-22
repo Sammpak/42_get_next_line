@@ -6,15 +6,13 @@
 /*   By: spaccaud <spaccaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/10/19 14:03:46 by spaccaud          #+#    #+#             */
-/*   Updated: 2026/10/21 14:23:52 by spaccaud         ###   ########.fr       */
+/*   Updated: 2026/10/22 10:09:49 by spaccaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <fcntl.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -27,8 +25,6 @@
 #  define BUFFER_SIZE 0
 # endif
 
-int		dict_open(char *file, int __oflag);
-int		dict_close(int filedesc);
 char	*ft_strjoin(char *s1, char *s2);
 char	*write_stash(int fd, char *stash);
 int		ft_strlen(const char *str);

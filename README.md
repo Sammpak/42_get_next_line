@@ -16,6 +16,46 @@ Your function can compile with the flag -D BUFFER_SIZE=n, which defines the buff
 
 bash
 
+You can use this main :
+```
+int	main(void)
+ 	{
+ 	 int	fd;
+ 	 int	fd_2;
+ 	 char	*result;
+ 	 char	*result_2;
+
+ 	 fd = open("test.txt", O_RDONLY);
+ 	 fd_2 = open("test2.txt", O_RDONLY);
+
+ 	printf(" %s", get_next_line(-2));
+ 	 result = get_next_line(fd);
+ 	 result_2 = get_next_line(fd_2);
+
+ 	 while (result || result_2)
+ 	 {
+ 	 	if (result)
+ 	 	{
+ 	 		printf("%s", result);
+ 	 		free(result);
+ 	 		result = get_next_line(fd);
+ 	 	}
+ 	 	if (result_2)
+ 	 	{
+ 	 		printf("%s", result_2);
+ 	 		free(result_2);
+ 	 		result_2 = get_next_line(fd_2);
+ 	 	}
+ 	 }
+ 	 close(fd);
+ 	 close(fd_2);
+
+ 	 close(fd);
+ 	 return (0);
+ }
+```
+And execute it with :
+
 cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 *.c
 
 ### resource
